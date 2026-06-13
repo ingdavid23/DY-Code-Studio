@@ -62,6 +62,19 @@
     /* --- OCULTAR SCROLLBAR EN PESTAÑAS MÓVILES --- */
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* --- ANIMACIONES DE REVELACIÓN AL SCROLL (FADE-IN UP) --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px); /* Empieza 40px más abajo */
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Movimiento ultra suave */
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0); /* Sube a su posición original */
+    }
+    
   </style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
@@ -279,6 +292,75 @@
    </div>
   </section>
 
+  <!-- Módulo de Comparativa: DY Code Studio vs Competencia -->
+<section class="py-24 px-6 bg-[#060B1F] reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">¿Qué nos hace diferentes?</h2>
+            <p class="text-gray-400 text-lg">No solo vendemos software, creamos herramientas que impulsan tu rentabilidad.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Columna DY Code Studio -->
+            <div class="bg-gradient-to-b from-purple/10 to-transparent p-8 rounded-3xl border border-purple/30">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="bg-purple p-2 rounded-lg"><i data-lucide="check" class="text-white"></i></div>
+                    <h3 class="text-2xl font-bold">DY Code Studio</h3>
+                </div>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="cloud" class="text-purple shrink-0 mt-1"></i>
+                        <div><strong class="text-white">Acceso Total:</strong> Monitorea desde cualquier dispositivo en tiempo real.</div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="layers" class="text-purple shrink-0 mt-1"></i>
+                        <div><strong class="text-white">100% Personalizado:</strong> Adaptamos el sistema a tus procesos, no al revés.</div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="shield-check" class="text-purple shrink-0 mt-1"></i>
+                        <div><strong class="text-white">Seguridad en la Nube:</strong> Respaldo automático y alta disponibilidad.</div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="headphones" class="text-purple shrink-0 mt-1"></i>
+                        <div><strong class="text-white">Soporte Humano:</strong> Atención rápida y personalizada cuando lo necesitas.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Columna La Competencia -->
+            <div class="bg-white/[0.02] p-8 rounded-3xl border border-white/5">
+                <div class="flex items-center gap-3 mb-8 opacity-60">
+                    <div class="bg-gray-800 p-2 rounded-lg"><i data-lucide="x" class="text-white"></i></div>
+                    <h3 class="text-2xl font-bold">La Competencia</h3>
+                </div>
+                <ul class="space-y-6 text-gray-500">
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="monitor-off" class="shrink-0 mt-1"></i>
+                        <div>Limitados a equipos locales y sistemas complicados.</div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="box" class="shrink-0 mt-1"></i>
+                        <div>Sistemas genéricos que no se ajustan a tu negocio.</div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="database-backup" class="shrink-0 mt-1"></i>
+                        <div>Riesgo de pérdida de información sin respaldos claros.</div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="user-minus" class="shrink-0 mt-1"></i>
+                        <div>Soporte técnico lento, inexistente o difícil de contactar.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Frase de cierre tipo trofeo -->
+        <div class="mt-12 text-center p-8 bg-purple/5 rounded-3xl border border-purple/20">
+            <p class="text-xl font-bold text-white">En DY Code Studio, creamos herramientas que generan resultados: <span class="text-electric">Más control, ahorro de tiempo y mayor rentabilidad.</span></p>
+        </div>
+    </div>
+</section>
+
   <!-- Paquete Completo Promoción -->
   <section class="py-24 px-6 bg-navy relative overflow-hidden border-t border-white/5">
     <!-- Elementos decorativos de fondo -->
@@ -378,6 +460,19 @@
     </div>
    </section>
 
+   <!-- Encabezado de la sección del Portafolio -->
+   <div class="text-center mb-12">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple/10 border border-purple/20 text-purple text-sm font-bold mb-6">
+        <i data-lucide="eye" style="width:16px;height:16px;" class="fill-current"></i> Vistazo a nuestro trabajo
+    </div>
+    
+    <h2 class="text-3xl md:text-5xl font-bold mb-6">Conoce nuestros sistemas por dentro</h2>
+    
+    <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+        No usamos plantillas aburridas ni sistemas complicados. Desarrollamos interfaces modernas, rápidas y súper intuitivas para que tú y tu equipo tengan el control total de la operación sin necesidad de ser expertos en tecnología.
+    </p>
+</div>
+
   <!-- Pestañas (Tabs) -->
   <div class="flex overflow-x-auto hide-scrollbar justify-start md:justify-center gap-3 mb-10 pb-4">
    <!-- Botón 1 (Punto de Venta) -->
@@ -445,89 +540,108 @@ Punto de Venta (POS)
         </a>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-     <!-- Card Servicio -->
-     <div class="bg-navy border border-white/5 rounded-2xl p-8 hover:border-purple/50 transition-all duration-300 group hover:-translate-y-1">
-      <div class="w-12 h-12 rounded-lg bg-purple/10 flex items-center justify-center mb-6 group-hover:bg-purple group-hover:text-white transition-all text-purple">
-       <i data-lucide="terminal-square" style="width:24px;height:24px;"></i>
+   <!-- Grid Bento Box -->
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      
+    <!-- Servicio 1: Punto de Venta (El más grande) -->
+    <div class="md:col-span-2 row-span-1 bg-navy border border-white/5 rounded-3xl p-8 hover:border-purple/50 transition-all duration-500 group hover:-translate-y-1 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-purple/10 to-transparent opacity-50"></div>
+      <div class="relative z-10 flex flex-col h-full">
+          <div class="w-14 h-14 rounded-2xl bg-purple/10 flex items-center justify-center mb-6 group-hover:bg-purple group-hover:text-white transition-all text-purple">
+              <i data-lucide="terminal-square" style="width:28px;height:28px;"></i>
+          </div>
+          <h3 class="font-bold text-2xl mb-3">Sistemas Punto de Venta (POS)</h3>
+          <p class="text-gray-400 text-base mb-6 leading-relaxed max-w-md">Cobra de manera ágil, administra inventarios multidivisa y genera reportes contables desde un solo lugar. La solución definitiva para controlar tu flujo de efectivo.</p>
+          <a href="#" class="inline-flex items-center gap-2 text-electric font-semibold group-hover:gap-3 transition-all mt-auto">Más información <i data-lucide="chevron-right" style="width:16px;height:16px;"></i></a>
       </div>
-      <h3 class="font-bold text-xl mb-3">Sistemas Punto de Venta (POS)</h3>
-      <p class="text-gray-400 text-sm mb-6 leading-relaxed">Cobra de manera ágil, administra inventarios multidivisa y genera reportes contables desde un solo lugar.</p>
-      <a href="https://wa.me/521234567890?text=Hola%2C%20quiero%20info%20sobre%20punto%20de%20venta" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-electric text-sm font-semibold group-hover:gap-3 transition-all">Más información <i data-lucide="chevron-right" style="width:16px;height:16px;"></i></a>
-     </div>
-     
-     <div class="bg-navy border border-white/5 rounded-2xl p-8 hover:border-electric/50 transition-all duration-300 group hover:-translate-y-1">
-      <div class="w-12 h-12 rounded-lg bg-electric/10 flex items-center justify-center mb-6 group-hover:bg-electric group-hover:text-white transition-all text-electric">
-       <i data-lucide="globe" style="width:24px;height:24px;"></i>
-      </div>
-      <h3 class="font-bold text-xl mb-3">Desarrollo Web</h3>
-      <p class="text-gray-400 text-sm mb-6 leading-relaxed">Páginas web corporativas, landing pages y tiendas online optimizadas para SEO y máxima conversión.</p>
-      <a href="https://wa.me/521234567890?text=Hola%2C%20quiero%20info%20sobre%20p%C3%A1ginas%20web" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-electric text-sm font-semibold group-hover:gap-3 transition-all">Más información <i data-lucide="chevron-right" style="width:16px;height:16px;"></i></a>
-     </div>
-
-     <div class="bg-navy border border-white/5 rounded-2xl p-8 hover:border-purple/50 transition-all duration-300 group hover:-translate-y-1">
-      <div class="w-12 h-12 rounded-lg bg-purple/10 flex items-center justify-center mb-6 group-hover:bg-purple group-hover:text-white transition-all text-purple">
-       <i data-lucide="smartphone" style="width:24px;height:24px;"></i>
-      </div>
-      <h3 class="font-bold text-xl mb-3">Aplicaciones Móviles</h3>
-      <p class="text-gray-400 text-sm mb-6 leading-relaxed">Apps nativas e híbridas para iOS y Android. Lleva tu negocio directamente al bolsillo de tus clientes.</p>
-      <a href="https://wa.me/521234567890?text=Hola%2C%20quiero%20info%20sobre%20apps%20m%C3%B3viles" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-electric text-sm font-semibold group-hover:gap-3 transition-all">Más información <i data-lucide="chevron-right" style="width:16px;height:16px;"></i></a>
-     </div>
     </div>
-   </div>
+
+    <!-- Servicio 2: Desarrollo Web (Vertical/Pequeño) -->
+    <div class="bg-navy border border-white/5 rounded-3xl p-8 hover:border-electric/50 transition-all duration-500 group hover:-translate-y-1 flex flex-col justify-between">
+      <div class="w-12 h-12 rounded-2xl bg-electric/10 flex items-center justify-center mb-6 group-hover:bg-electric group-hover:text-white transition-all text-electric">
+          <i data-lucide="globe" style="width:24px;height:24px;"></i>
+      </div>
+      <div>
+          <h3 class="font-bold text-xl mb-3">Desarrollo Web</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Páginas web y tiendas online optimizadas para SEO y alta conversión.</p>
+      </div>
+      <a href="#" class="text-electric text-sm font-semibold flex items-center gap-2">Ver más <i data-lucide="chevron-right" style="width:16px;height:16px;"></i></a>
+    </div>
+
+    <!-- Servicio 3: Apps Móviles (Horizontal/Pequeño) -->
+    <div class="md:col-span-3 lg:col-span-3 bg-navy border border-white/5 rounded-3xl p-8 hover:border-purple/50 transition-all duration-500 group hover:-translate-y-1 flex flex-col md:flex-row items-center gap-8">
+      <div class="flex items-center gap-6">
+          <div class="w-12 h-12 rounded-2xl bg-purple/10 flex items-center justify-center group-hover:bg-purple group-hover:text-white transition-all text-purple">
+              <i data-lucide="smartphone" style="width:24px;height:24px;"></i>
+          </div>
+          <div>
+              <h3 class="font-bold text-xl mb-1">Aplicaciones Móviles a Medida</h3>
+              <p class="text-gray-400 text-sm">Apps nativas para iOS y Android que llevan tu negocio directamente al bolsillo de tus clientes.</p>
+          </div>
+      </div>
+      <div class="md:ml-auto">
+          <a href="#" class="gradient-btn px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap">Solicitar App</a>
+      </div>
+    </div>
+    
+  </div>
   </section>
 
-  <!-- Soluciones por giro -->
-  <section id="soluciones" class="py-24 px-6 bg-navy border-t border-white/5">
-   <div class="max-w-7xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Soluciones específicas por industria</h2>
-    <p class="text-gray-400 text-center mb-14 max-w-2xl mx-auto">Entendemos que cada sector tiene reglas distintas. Adaptamos la lógica de cada sistema a las exigencias puntuales de tu negocio.</p>
+  <section id="soluciones" class="py-24 px-6 bg-navy border-t border-white/5 reveal">
+    <div class="max-w-7xl mx-auto">
+     <!-- Aquí es donde ajustamos el texto -->
+     <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Soluciones específicas para cualquier empresa o negocio</h2>
+     <p class="text-gray-400 text-center mb-14 max-w-2xl mx-auto">
+         Entendemos que cada sector tiene reglas distintas. Desarrollamos sistemas a la medida para todo tipo de giros comerciales, desde pequeñas empresas hasta grandes proyectos. 
+         <span class="text-white font-semibold">Si puedes imaginarlo, podemos sistematizarlo.</span>
+     </p>
+     
+     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
     
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         <!-- Fila 1 -->
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">🍕</span>
-         <p class="text-sm font-semibold text-gray-200">Restaurantes</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="utensils" class="w-8 h-8 mx-auto mb-3 text-purple group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Restaurantes</p>
         </div>
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">🛒</span>
-         <p class="text-sm font-semibold text-gray-200">Tiendas y Abarrotes</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="shopping-cart" class="w-8 h-8 mx-auto mb-3 text-electric group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Abarrotes</p>
         </div>
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">👗</span>
-         <p class="text-sm font-semibold text-gray-200">Boutiques</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="shirt" class="w-8 h-8 mx-auto mb-3 text-purple group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Boutiques</p>
         </div>
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">🏥</span>
-         <p class="text-sm font-semibold text-gray-200">Salud y Clínicas</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="activity" class="w-8 h-8 mx-auto mb-3 text-electric group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Clínicas</p>
         </div>
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">🚚</span>
-         <p class="text-sm font-semibold text-gray-200">Logística</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="truck" class="w-8 h-8 mx-auto mb-3 text-purple group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Logística</p>
         </div>
-   
+    
         <!-- Fila 2 -->
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">📓</span>
-         <p class="text-sm font-semibold text-gray-200">Papelerías</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="book-open" class="w-8 h-8 mx-auto mb-3 text-electric group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Papelerías</p>
         </div>
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">💈</span>
-         <p class="text-sm font-semibold text-gray-200">Barberías y Salones</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="scissors" class="w-8 h-8 mx-auto mb-3 text-purple group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Salones</p>
         </div>
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">🧴</span>
-         <p class="text-sm font-semibold text-gray-200">Perfumerías</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="spray-can" class="w-8 h-8 mx-auto mb-3 text-electric group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Perfumerías</p>
         </div>
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">🫓</span>
-         <p class="text-sm font-semibold text-gray-200">Tortillerías</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-purple/10 hover:border-purple/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="package" class="w-8 h-8 mx-auto mb-3 text-purple group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Tortillerías</p>
         </div>
-        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default">
-         <span class="text-4xl mb-3 block drop-shadow-lg">🏋️</span>
-         <p class="text-sm font-semibold text-gray-200">Gimnasios</p>
+        <div class="bg-[#0a0f25] border border-white/5 rounded-xl p-6 text-center hover:bg-electric/10 hover:border-electric/30 hover:-translate-y-1 transition-all cursor-default group">
+            <i data-lucide="dumbbell" class="w-8 h-8 mx-auto mb-3 text-electric group-hover:scale-110 transition-transform"></i>
+            <p class="text-sm font-semibold text-gray-200">Gimnasios</p>
         </div>
-       </div>
+    </div>
   </section>
 
   <!-- Casos de éxito y Testimonios -->
@@ -660,6 +774,48 @@ Punto de Venta (POS)
    </div>
   </section>
 
+  <section class="py-16 px-6 bg-[#050814] border-t border-white/5 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wMykiLz48L3N2Zz4=')] opacity-50"></div>
+    
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        
+        <div class="flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-purple/40 transition-all duration-500 group cursor-default hover:-translate-y-1 shadow-lg hover:shadow-purple/10">
+          <div class="w-14 h-14 rounded-full bg-purple/10 flex items-center justify-center text-purple mb-5 group-hover:scale-110 group-hover:bg-purple group-hover:text-white transition-all duration-300">
+            <i data-lucide="shield-check" style="width:28px;height:28px;"></i>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-3">Máxima Seguridad</h4>
+          <p class="text-gray-400 text-sm leading-relaxed">Encriptación de alto nivel para proteger tu información financiera y los datos de tus clientes.</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-electric/40 transition-all duration-500 group cursor-default hover:-translate-y-1 shadow-lg hover:shadow-electric/10">
+          <div class="w-14 h-14 rounded-full bg-electric/10 flex items-center justify-center text-electric mb-5 group-hover:scale-110 group-hover:bg-electric group-hover:text-white transition-all duration-300">
+            <i data-lucide="server" style="width:28px;height:28px;"></i>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-3">Respaldos en la Nube</h4>
+          <p class="text-gray-400 text-sm leading-relaxed">Sincronización automática. Nunca perderás una sola venta o dato de tu inventario si tu equipo falla.</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-purple/40 transition-all duration-500 group cursor-default hover:-translate-y-1 shadow-lg hover:shadow-purple/10">
+            <div class="w-14 h-14 rounded-full bg-purple/10 flex items-center justify-center text-purple mb-5 group-hover:scale-110 group-hover:bg-purple group-hover:text-white transition-all duration-300">
+              <i data-lucide="headphones" style="width:28px;height:28px;"></i>
+            </div>
+            <h4 class="text-white font-bold text-lg mb-3">Soporte Dedicado</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">Atención técnica rápida y capacitaciones continuas. No te dejamos solo después de la instalación.</p>
+          </div>
+
+        <div class="flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-electric/40 transition-all duration-500 group cursor-default hover:-translate-y-1 shadow-lg hover:shadow-electric/10">
+          <div class="w-14 h-14 rounded-full bg-electric/10 flex items-center justify-center text-electric mb-5 group-hover:scale-110 group-hover:bg-electric group-hover:text-white transition-all duration-300">
+            <i data-lucide="check-circle" style="width:28px;height:28px;"></i>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-3">Garantía de Calidad</h4>
+          <p class="text-gray-400 text-sm leading-relaxed">Sistemas estables probados bajo estrés, desarrollados para funcionar sin caídas las 24 horas del día.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ / Preguntas Frecuentes -->
   <section class="py-24 px-6 bg-[#0a0f25] border-t border-white/5">
     <div class="max-w-4xl mx-auto">
@@ -723,6 +879,8 @@ Punto de Venta (POS)
     </div>
    </section>
 
+   
+
   <!-- CTA Final -->
   <section class="py-24 px-6 bg-gradient-to-br from-purple/30 via-navy to-electric/20 relative overflow-hidden border-t border-white/10">
     <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 50%, #7B2EFF 0%, transparent 50%), radial-gradient(circle at 80% 50%, #00AEEF 0%, transparent 50%); filter: blur(40px);"></div>
@@ -748,6 +906,8 @@ Punto de Venta (POS)
      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.052 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
   </svg>
 </a>
+
+
 
 <!-- Footer Realista -->
 <footer class="pt-16 pb-8 px-6 bg-[#050814] border-t border-white/5">
@@ -966,6 +1126,26 @@ const tabBtns = document.querySelectorAll('.tab-btn');
         });
       });
     }
+
+    // --- LÓGICA DE ANIMACIÓN AL SCROLL (FADE-IN UP) ---
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Agrega la clase 'active' para que el elemento aparezca
+          entry.target.classList.add('active');
+          // Deja de observar el elemento para que solo se anime la primera vez
+          observer.unobserve(entry.target); 
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15, // Se activa cuando el 15% del elemento ya es visible
+      rootMargin: "0px 0px -50px 0px" // Margen de seguridad
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
