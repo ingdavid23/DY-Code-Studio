@@ -976,16 +976,18 @@ aria-label="Contactar por WhatsApp">
   </div>
   
   <!-- Barra inferior (Copyright e Icono) -->
-  <div class="max-w-7xl mx-auto pt-6 border-t border-white/5 flex items-center justify-between">
-      <p class="text-gray-500 text-sm">© 2026 DY Code Studio. Todos los derechos reservados.</p>
-      
-      <!-- Margen mr-20 (80px) lo coloca exactamente al lado izquierdo del WhatsApp -->
-      <div class="mr-20">
-          <a href="https://www.facebook.com/share/1ViYGrf2zP/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-[#1877F2] hover:scale-110 transition-all duration-300 block" aria-label="Visitar Facebook">
-              <i data-lucide="facebook" style="width:20px;height:20px;"></i>
-          </a>
-      </div>
-  </div>
+  <!-- Barra inferior (Copyright e Icono) -->
+  <div class="max-w-7xl mx-auto pt-6 pb-20 md:pb-0 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="text-gray-500 text-sm text-center md:text-left">© 2026 DY Code Studio. Todos los derechos reservados.</p>
+    
+    <!-- En celular se centra, en PC mantiene su margen derecho -->
+    <div class="md:mr-20">
+        <a href="https://www.facebook.com/share/1ViYGrf2zP/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-[#1877F2] hover:scale-110 transition-all duration-300 block" aria-label="Visitar Facebook">
+            <i data-lucide="facebook" style="width:24px;height:24px;"></i>
+        </a>
+    </div>
+</div>
+</footer>
 </footer>
 <script>
 
