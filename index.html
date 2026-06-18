@@ -8,6 +8,8 @@
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <script src="/_sdk/element_sdk.js"></script>
+  <!-- Librería para Gráficas Interactivas -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <script>
@@ -734,6 +736,62 @@ Punto de Venta (POS)
    </div>
   </section>
 
+  <!-- Módulo de Gráficas de Resultados -->
+<section id="resultados" class="py-24 px-6 bg-[#050814] relative border-t border-white/5 overflow-hidden">
+  <!-- Brillo de fondo -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-electric/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-center mb-16 reveal">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-electric/10 border border-electric/20 text-electric text-sm font-bold mb-6">
+              <i data-lucide="bar-chart-2" style="width:16px;height:16px;"></i> Resultados Medibles
+          </div>
+          <h2 class="text-3xl md:text-5xl font-bold mb-4">El impacto de digitalizar tu operación</h2>
+          <p class="text-gray-400 text-lg max-w-2xl mx-auto">Nuestros sistemas están diseñados para generar un retorno de inversión claro. No vendemos código, vendemos crecimiento comercial.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+          
+          <!-- Gráfica 1: Crecimiento de Efectivo -->
+          <div class="bg-[#0a0f25] p-6 rounded-3xl border border-white/5 hover:border-purple/30 transition-all shadow-xl group reveal">
+              <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-lg font-bold text-white">Flujo de Efectivo</h3>
+                  <i data-lucide="trending-up" class="text-purple w-5 h-5"></i>
+              </div>
+              <p class="text-xs text-gray-400 mb-6">Aumento en ventas tras evitar cuellos de botella en caja.</p>
+              <div class="relative h-48 w-full">
+                  <canvas id="chartEfectivo"></canvas>
+              </div>
+          </div>
+
+          <!-- Gráfica 2: Reducción de Tiempo Manual -->
+          <div class="bg-[#0a0f25] p-6 rounded-3xl border border-white/5 hover:border-electric/30 transition-all shadow-xl group reveal" style="transition-delay: 100ms;">
+              <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-lg font-bold text-white">Tiempo Administrativo</h3>
+                  <i data-lucide="clock" class="text-electric w-5 h-5"></i>
+              </div>
+              <p class="text-xs text-gray-400 mb-6">Horas semanales invertidas en inventarios y cortes de caja.</p>
+              <div class="relative h-48 w-full">
+                  <canvas id="chartTiempo"></canvas>
+              </div>
+          </div>
+
+          <!-- Gráfica 3: Cero Mermas -->
+          <div class="bg-[#0a0f25] p-6 rounded-3xl border border-white/5 hover:border-purple/30 transition-all shadow-xl group reveal" style="transition-delay: 200ms;">
+              <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-lg font-bold text-white">Mermas y Faltantes</h3>
+                  <i data-lucide="shield-check" class="text-purple w-5 h-5"></i>
+              </div>
+              <p class="text-xs text-gray-400 mb-6">Reducción de pérdidas por robos o errores de registro.</p>
+              <div class="relative h-48 w-full">
+                  <canvas id="chartMermas"></canvas>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</section>
+
   <!-- Proceso (Metodología) -->
   <section id="proceso" class="py-24 px-6 bg-navy relative">
    <div class="max-w-7xl mx-auto">
@@ -1165,6 +1223,108 @@ const tabBtns = document.querySelectorAll('.tab-btn');
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // --- LÓGICA DE GRÁFICAS INTERACTIVAS (CHART.JS) ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const chartEfectivoCtx = document.getElementById('chartEfectivo');
+        const chartTiempoCtx = document.getElementById('chartTiempo');
+        const chartMermasCtx = document.getElementById('chartMermas');
+
+        if (chartEfectivoCtx && chartTiempoCtx && chartMermasCtx) {
+            
+            // Configuración global para Dark Mode
+            Chart.defaults.color = '#9ca3af';
+            Chart.defaults.font.family = 'Plus Jakarta Sans';
+            Chart.defaults.scale.grid.color = 'rgba(255, 255, 255, 0.05)';
+            
+            let chartsRendered = false; // Bandera para animar solo una vez
+
+            const renderCharts = () => {
+                // Función para crear degradados
+                const createGradient = (ctx, colorStart, colorEnd) => {
+                    const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 200);
+                    gradient.addColorStop(0, colorStart);
+                    gradient.addColorStop(1, colorEnd);
+                    return gradient;
+                };
+
+                // 1. Gráfica de Efectivo (Línea Ascendente)
+                new Chart(chartEfectivoCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Mes 1', 'Mes 2', 'Mes 3', 'Mes 4', 'Mes 5', 'Mes 6'],
+                        datasets: [{
+                            label: 'Ingresos',
+                            data: [15, 22, 35, 55, 75, 100],
+                            borderColor: '#7B2EFF',
+                            backgroundColor: createGradient(chartEfectivoCtx, 'rgba(123, 46, 255, 0.5)', 'rgba(123, 46, 255, 0.0)'),
+                            borderWidth: 3,
+                            tension: 0.4, // Hace la línea curva y suave
+                            fill: true,
+                            pointBackgroundColor: '#0a0f25',
+                            pointBorderColor: '#7B2EFF',
+                            pointBorderWidth: 2
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                });
+
+                // 2. Gráfica de Tiempo (Barras - Comparación)
+                new Chart(chartTiempoCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Cortes', 'Inventario', 'Reportes'],
+                        datasets: [
+                            {
+                                label: 'Procesos Manuales',
+                                data: [12, 18, 10], // Horas
+                                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                borderRadius: 6
+                            },
+                            {
+                                label: 'Con DY Code',
+                                data: [1, 2, 0.5], // Horas
+                                backgroundColor: '#00AEEF',
+                                borderRadius: 6
+                            }
+                        ]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } } }, scales: { y: { display: false } } }
+                });
+
+                // 3. Gráfica de Mermas (Línea Descendente)
+                new Chart(chartMermasCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4'],
+                        datasets: [{
+                            label: 'Pérdidas',
+                            data: [100, 45, 15, 2], // Caída drástica
+                            borderColor: '#00AEEF',
+                            backgroundColor: createGradient(chartMermasCtx, 'rgba(0, 174, 239, 0.3)', 'rgba(0, 174, 239, 0.0)'),
+                            borderWidth: 3,
+                            tension: 0.4,
+                            fill: true,
+                            pointBackgroundColor: '#0a0f25',
+                            pointBorderColor: '#00AEEF',
+                            pointBorderWidth: 2
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false } } }
+                });
+            };
+
+            // Intersection Observer para animar las gráficas al hacer scroll
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !chartsRendered) {
+                    renderCharts();
+                    chartsRendered = true;
+                }
+            }, { threshold: 0.3 }); // Se activa cuando el 30% de la sección es visible
+
+            observer.observe(document.getElementById('resultados'));
+        }
+    });
 </script>
 </body>
 </html>
