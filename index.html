@@ -79,7 +79,9 @@
     }
     
   </style>
+  <!-- PRECARGA DE IMÁGENES DEL PORTAFOLIO PARA EVITAR RETRASOS -->
   <link rel="preload" as="image" href="admin.jpg">
+  <link rel="preload" as="image" href="app.jpg"> <!-- Enlace actualizado aquí -->
   <link rel="preload" as="image" href="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80">
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
@@ -477,29 +479,31 @@
         No usamos plantillas aburridas ni sistemas complicados. Desarrollamos interfaces modernas, rápidas y súper intuitivas para que tú y tu equipo tengan el control total de la operación sin necesidad de ser expertos en tecnología.
     </p>
 </div>
-
-  <!-- Pestañas (Tabs) -->
-  <div class="flex overflow-x-auto hide-scrollbar justify-start md:justify-center gap-3 mb-10 pb-4">
-   <!-- Botón 1 (Punto de Venta) -->
-   <button class="tab-btn active px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap bg-purple text-white shadow-[0_0_15px_rgba(123,46,255,0.4)] transition-all duration-300" 
-   data-img="pos.jpg" 
-   data-pos="center 55%"> <!-- 55% enfoca directo en el monitor -->
-Punto de Venta (POS)
-</button>
-    
-    <!-- Botón 2 (Panel Administrativo) -->
-    <button class="tab-btn px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10 hover:text-white transition-all duration-300" 
-            data-img="admin.jpg" 
-            data-pos="center 10%"> <!-- Encuadra un 10% desde arriba para no cortar el título -->
-        Panel Administrativo
-    </button>
-    
-    <!-- Botón 3 (App Móvil) -->
-    <button class="tab-btn px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10 hover:text-white transition-all duration-300" 
-            data-img="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80" 
-            data-pos="center center"> <!-- Centrado normal -->
-        App Móvil
-    </button>
+<!-- Pestañas (Tabs) -->
+<div class="flex overflow-x-auto hide-scrollbar justify-start md:justify-center gap-3 mb-10 pb-4">
+  <!-- Botón 1 (Punto de Venta) -->
+  <button class="tab-btn active px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap bg-purple text-white shadow-[0_0_15px_rgba(123,46,255,0.4)] transition-all duration-300" 
+          data-img="pos.jpg" 
+          data-pos="center 55%"
+          data-fit="cover">
+      Punto de Venta (POS)
+  </button>
+  
+  <!-- Botón 2 (Panel Administrativo) -->
+  <button class="tab-btn px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10 hover:text-white transition-all duration-300" 
+          data-img="admin.jpg" 
+          data-pos="center 10%"
+          data-fit="cover">
+      Panel Administrativo
+  </button>
+  
+  <!-- Botón 3 (App Móvil) -->
+  <button class="tab-btn px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10 hover:text-white transition-all duration-300" 
+          data-img="app.jpg" 
+          data-pos="center center"
+          data-fit="contain"> <!-- Esto hace el zoom out mágico -->
+      App Móvil
+  </button>
 </div>
 
 <!-- Contenedor de Imagen de Pantalla -->
@@ -1176,33 +1180,36 @@ aria-label="Contactar por WhatsApp">
 
 // --- LÓGICA PORTAFOLIO VISUAL (PESTAÑAS) ---
 const tabBtns = document.querySelectorAll('.tab-btn');
-    const portfolioImg = document.getElementById('portfolio-img');
+const portfolioImg = document.getElementById('portfolio-img');
 
-    if(tabBtns.length > 0 && portfolioImg) {
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          // 1. Apagar todos los botones
-          tabBtns.forEach(b => {
-            b.classList.remove('bg-purple', 'text-white', 'shadow-[0_0_15px_rgba(123,46,255,0.4)]', 'active');
-            b.classList.add('bg-white/5', 'text-gray-400');
-          });
-
-          // 2. Encender el botón clickeado
-          btn.classList.remove('bg-white/5', 'text-gray-400');
-          btn.classList.add('bg-purple', 'text-white', 'shadow-[0_0_15px_rgba(123,46,255,0.4)]', 'active');
-
-          // 3. Cambiar la imagen y su posición de manera independiente
-          portfolioImg.style.opacity = '0.2'; 
-          
-          setTimeout(() => {
-            portfolioImg.src = btn.getAttribute('data-img');
-            // Aquí le pasamos la posición exacta que configuraste en cada botón
-            portfolioImg.style.objectPosition = btn.getAttribute('data-pos') || 'center';
-            portfolioImg.style.opacity = '1'; 
-          }, 300); 
-        });
+if(tabBtns.length > 0 && portfolioImg) {
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // 1. Apagar todos los botones
+      tabBtns.forEach(b => {
+        b.classList.remove('bg-purple', 'text-white', 'shadow-[0_0_15px_rgba(123,46,255,0.4)]', 'active');
+        b.classList.add('bg-white/5', 'text-gray-400');
       });
-    }
+
+      // 2. Encender el botón clickeado
+      btn.classList.remove('bg-white/5', 'text-gray-400');
+      btn.classList.add('bg-purple', 'text-white', 'shadow-[0_0_15px_rgba(123,46,255,0.4)]', 'active');
+
+      // 3. Cambiar la imagen, posición y el ZOOM
+      portfolioImg.style.opacity = '0.2'; 
+      
+      setTimeout(() => {
+        portfolioImg.src = btn.getAttribute('data-img');
+        portfolioImg.style.objectPosition = btn.getAttribute('data-pos') || 'center';
+        
+        // ESTA ES LA LÍNEA NUEVA QUE APLICA EL ZOOM CORRECTO:
+        portfolioImg.style.objectFit = btn.getAttribute('data-fit') || 'cover';
+        
+        portfolioImg.style.opacity = '1'; 
+      }, 300); 
+    });
+  });
+}
 
     // --- LÓGICA DE ANIMACIÓN AL SCROLL (FADE-IN UP) ---
     const revealElements = document.querySelectorAll('.reveal');
